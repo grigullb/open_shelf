@@ -8,6 +8,17 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host: 'localhost',
+    user: 'development',
+    password: 'development',
+    database: 'open_shelf'
+  } 
+});
+var Bookshelf = require('bookshelf')(knex);
+
 var app = express();
 
 // view engine setup
@@ -55,6 +66,8 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
 
 
 module.exports = app;
