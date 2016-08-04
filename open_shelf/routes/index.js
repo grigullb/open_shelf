@@ -9,22 +9,21 @@ var knex = require('knex')({client: 'pg',
   }});
 var bookshelf = require('bookshelf')(knex);
 
-var User = bookshelf.Model.extend({
-  tableName: 'users',
-  posts: function() {
-    return this.hasMany(Posts);
-  }
-});
+
 
 var List = bookshelf.Model.extend({
-  tableName: 'lists'
+  tableName: 'lists',
+  name: 'name'
 })
+
+
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-  res.render('index', { title: 'Express' });
+res.render('index', { title: 'Open Shelf'});
 });
+
+
 
 module.exports = router;
