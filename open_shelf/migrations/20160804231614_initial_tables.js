@@ -12,13 +12,13 @@ exports.up = function(knex, Promise) {
     table.string('isbn');
     table.string('author_firstname');
     table.string('author_lastname');
-    table.integer('user_id').foreign(users).references(users);
+    table.integer('user_id').references('users');
     table.timestamps();
   }).createTable('messages', function(table){
     table.increments('id').primary();
     table.string('text');
-    table.integer('sender_id').foreign(users).references(users);
-    table.integer('reciever_id').foreign(users).references(users);
+    table.integer('sender_id').references('users');
+    table.integer('reciever_id').references('users');
     table.timestamps();
   });
 };
